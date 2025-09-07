@@ -1,5 +1,5 @@
 <!-- Badges -->
-[![License](https://img.shields.io/github/license/Charitha-Jeewanka/F1-Winner-Predictions)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Python](https://img.shields.io/badge/python-3.11%2B-blue)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Last commit](https://img.shields.io/github/last-commit/Charitha-Jeewanka/F1-Winner-Predictions/master)](https://github.com/Charitha-Jeewanka/F1-Winner-Predictions/commits/master)
