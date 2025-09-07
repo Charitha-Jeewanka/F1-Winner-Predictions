@@ -1,0 +1,92 @@
+random_seed: 42
+
+# --------- DATA & COLUMNS ---------
+data_paths:
+  dataset: "data/processed/race_dataset_all.csv"
+  artifacts_dir: "artifacts"
+  models_dir: "artifacts/models"
+  reports_dir: "artifacts/reports"
+
+columns:
+  target: "is_winner"            
+  finish_pos: "finish_pos"        
+  group: "event_code"             
+  leakage_guard: ["finish_pos", "pos_gain", "points", "laps_completed", "race_gap_s"]
+  categorical_hints: ["Abbreviation", "team", "status"]
+  drop_columns: []                 
+
+
+split:
+  test_size: 0.15
+  val_size: 0.15
+
+models:
+  enabled: ["xgboost", "catboost", "lightgbm", "random_forest", "logistic_regression"]
+
+  xgboost:
+    params:
+      n_estimators: 500
+      learning_rate: 0.05
+      max_depth: 6
+      subsample: 0.8
+      colsample_bytree: 0.8
+      tree_method: "hist"
+      eval_metric: "logloss"     
+
+  catboost:
+    params:
+      iterations: 1000
+      depth: 6
+      learning_rate: 0.05
+      loss_function: "Logloss"
+      verbose: 200
+      allow_writing_files: false
+
+  lightgbm:
+    params:
+      n_estimators: 800
+      learning_rate: 0.05
+      num_leaves: 63
+      subsample: 0.8
+      colsample_bytree: 0.8
+      objective: "binary"
+
+  random_forest:
+    params:
+      n_estimators: 600
+      max_depth: null
+      min_samples_split: 2
+      min_samples_leaf: 1
+      n_jobs: -1
+      random_state: 42
+
+  logistic_regression:
+    params:
+      penalty: "l2"
+      C: 1.0
+      solver: "liblinear"
+      max_iter: 2000
+
+
+metrics:
+  ks: [1, 3]         
+  threshold: 0.5     
+  plots: true        
+
+inference:
+  input_csv: "data/inference/this_weekend_quali.csv"  
+  event_code: "2025_12"                                
+  ensemble: "rank_rff"                                
+  top_k: 3                                             
+
+mlflow:
+  enabled: true
+  tracking_uri: "file:artifacts/mlruns"   #http://127.0.0.1:5000
+  experiment: "F1 Winner Model"
+  nested: true
+  tags: { project: "f1-winner-model" }  
+
+calibration:
+  enabled: true
+  method: sigmoid     
+  models: ["xgboost", "lightgbm", "random_forest", "catboost"]  

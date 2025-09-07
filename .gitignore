@@ -1,0 +1,6 @@
+.fastf1_cache/
+.venv/
+data/
+artifacts/
+.env
+*.png
