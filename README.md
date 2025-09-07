@@ -1,10 +1,10 @@
-# F1 Winner Model
-
 <!-- Badges -->
 [![License](https://img.shields.io/github/license/Charitha-Jeewanka/F1-Winner-Predictions)](LICENSE)
-![Python](https://img.shields.io/badge/python-3.10%2B-blue)
+![Python](https://img.shields.io/badge/python-3.11%2B-blue)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Last commit](https://img.shields.io/github/last-commit/Charitha-Jeewanka/F1-Winner-Predictions/master)](https://github.com/<OWNER>/<REPO>/commits/master)
+[![Last commit](https://img.shields.io/github/last-commit/Charitha-Jeewanka/F1-Winner-Predictions/master)](https://github.com/Charitha-Jeewanka/F1-Winner-Predictions/commits/master)
+
+# F1 Winner prediction Model
 
 Predict the **race winner** before lights out using qualifying data and other pre‑race features. This repo provides a **config‑driven** pipeline for:
 
